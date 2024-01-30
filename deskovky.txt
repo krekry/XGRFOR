@@ -1,0 +1,10 @@
+Monopoly, ano, 2
+Catan, ne, 3
+Ticket to Ride, ano, 3
+Scrabble, ano, 1
+Risk, ne, 2
+Codenames, ano, 3
+Pandemic, ne, 3
+Chess, ano, 1
+Carcassonne, ano, 2
+Splendor, ano, 3
