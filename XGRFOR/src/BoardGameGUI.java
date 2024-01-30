@@ -20,7 +20,7 @@ public class BoardGameGUI extends JFrame {
         this.currentIndex = 0;
 
         setTitle("Deskové Hry");
-        setSize(500, 300);
+        setSize(600, 200);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         initializeUI();
@@ -28,14 +28,22 @@ public class BoardGameGUI extends JFrame {
     }
 
     private void initializeUI() {
-        JPanel mainPanel = new JPanel(new GridLayout(4, 2));
+        JPanel mainPanel = new JPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(5, 5, 5, 5);
+        gbc.gridx = 0;
+        gbc.gridy = 0;
 
         nameLabel = new JLabel();
-        mainPanel.add(new JLabel("Název hry:"));
-        mainPanel.add(nameLabel);
+        mainPanel.add(new JLabel("Název hry:"), gbc);
+        gbc.gridx = 1;
+        mainPanel.add(nameLabel, gbc);
+        gbc.gridy++;
 
         purchasedCheckBox = new JCheckBox("Koupeno");
-        mainPanel.add(purchasedCheckBox);
+        gbc.gridx = 0;
+        mainPanel.add(purchasedCheckBox, gbc);
+        gbc.gridy++;
 
         ButtonGroup popularityGroup = new ButtonGroup();
         favorite1RadioButton = new JRadioButton("1");
@@ -46,15 +54,18 @@ public class BoardGameGUI extends JFrame {
         popularityGroup.add(favorite2RadioButton);
         popularityGroup.add(favorite3RadioButton);
 
-        mainPanel.add(new JLabel("Oblíbenost:"));
-        mainPanel.add(favorite1RadioButton);
-        mainPanel.add(new JLabel(""));
-        mainPanel.add(favorite2RadioButton);
-        mainPanel.add(new JLabel(""));
-        mainPanel.add(favorite3RadioButton);
+        gbc.gridx = 0;
+        mainPanel.add(new JLabel("Oblíbenost:"), gbc);
+        gbc.gridx = 1;
+        mainPanel.add(favorite1RadioButton, gbc);
+        gbc.gridx = 2;
+        mainPanel.add(favorite2RadioButton, gbc);
+        gbc.gridx = 3;
+        mainPanel.add(favorite3RadioButton, gbc);
+        gbc.gridy++;
 
-        JButton previousButton = new JButton("Předchozí");
-        JButton nextButton = new JButton("Další");
+        previousButton = new JButton("Předchozí");
+        nextButton = new JButton("Další");
 
         previousButton.addActionListener(new ActionListener() {
             @Override
@@ -72,8 +83,10 @@ public class BoardGameGUI extends JFrame {
             }
         });
 
-        mainPanel.add(previousButton);
-        mainPanel.add(nextButton);
+        gbc.gridx = 1;
+        mainPanel.add(previousButton, gbc);
+        gbc.gridx = 2;
+        mainPanel.add(nextButton, gbc);
 
         add(mainPanel);
     }
